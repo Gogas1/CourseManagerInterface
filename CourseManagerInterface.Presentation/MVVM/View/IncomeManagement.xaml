@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="CourseManagerInterface.Presentation.MVVM.View.IncomeManagement"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CourseManagerInterface.Presentation.MVVM.View"
+             mc:Ignorable="d" 
+             d:DataContext="{}"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1.5*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel 
+            Grid.Row="0"
+            Grid.Column="0"
+            Orientation="Horizontal">
+            <Label 
+                Content="Start:"/>
+            <DatePicker />
+            <Label 
+                Content="End:"/>
+            <DatePicker />
+            <Button 
+                Content="Search"
+                Padding="10 5 10 5"
+                Margin="10 0 0 0"/>
+        </StackPanel>
+        <StackPanel
+            Grid.Row="0"
+            Grid.Column="1">
+            <StackPanel>
+                <Button 
+                    Content="Create new"
+                    HorizontalAlignment="Left"
+                    Padding="10 5 10 5"/>
+            </StackPanel>
+        </StackPanel>
+        <DataGrid
+            Grid.Row="1"
+            Grid.Column="0"
+            IsReadOnly="True"
+            AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                
+            </DataGrid.Columns>            
+        </DataGrid>
+    </Grid>
+</UserControl>

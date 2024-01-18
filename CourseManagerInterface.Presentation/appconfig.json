@@ -1,0 +1,14 @@
+{
+  "ServerConfig": {
+    "DefaultHost": "127.0.0.1",
+    "DefaultPort": 8000
+  },
+  "exclude": [
+    "**/bin",
+    "**/bower_components",
+    "**/jspm_packages",
+    "**/node_modules",
+    "**/obj",
+    "**/platforms"
+  ]
+}
