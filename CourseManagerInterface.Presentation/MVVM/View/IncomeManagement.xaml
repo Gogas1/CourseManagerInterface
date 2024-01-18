@@ -4,8 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CourseManagerInterface.Presentation.MVVM.View"
+             xmlns:viewModel="clr-namespace:CourseManagerInterface.Presentation.MVVM.ViewModel"
              mc:Ignorable="d" 
-             d:DataContext="{}"
+             d:DataContext="{d:DesignInstance {x:Type viewModel:IncomeManagementViewModel}}"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
@@ -39,16 +40,22 @@
                 <Button 
                     Content="Create new"
                     HorizontalAlignment="Left"
-                    Padding="10 5 10 5"/>
+                    Padding="10 5 10 5"
+                    Margin="10 0 0 0"/>
             </StackPanel>
         </StackPanel>
         <DataGrid
             Grid.Row="1"
             Grid.Column="0"
             IsReadOnly="True"
-            AutoGenerateColumns="False">
+            AutoGenerateColumns="False"
+            Margin="0 10 0 0"
+            ItemsSource="{Binding Incomes}">
             <DataGrid.Columns>
-                
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}" />
+                <DataGridTextColumn Header="Date" Binding="{Binding DateTime}" />
+                <DataGridTextColumn Header="Supplier" Binding="{Binding Supplier}" />
+                <DataGridTextColumn Header="Summ" Binding="{Binding Summ}" />
             </DataGrid.Columns>            
         </DataGrid>
     </Grid>
