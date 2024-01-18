@@ -1,4 +1,5 @@
 ﻿using CourseManagerInterface.Presentation.Core;
+using CourseManagerInterface.Presentation.Interfaces;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;

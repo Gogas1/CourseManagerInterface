@@ -21,6 +21,7 @@ namespace CourseManagerInterface.Presentation.Extensions
             services.AddSingleton<TestViewModel>();
             services.AddSingleton<IncomeRegisterViewModel>();
             services.AddSingleton<HomeViewModel>();
+            services.AddSingleton<IncomeManagementViewModel>();
 
             services.AddSingleton<Func<Type, ViewModel>>(serviceProvider => viewModelType => (ViewModel)serviceProvider.GetRequiredService(viewModelType));
         }

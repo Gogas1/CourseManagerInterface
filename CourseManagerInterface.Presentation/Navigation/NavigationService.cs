@@ -28,7 +28,7 @@ namespace CourseManagerInterface.Presentation.Navigation
         }
 
         public void NavigateTo<TViewModel>() where TViewModel : ViewModel
-        {          
+        {
             ViewModel viewModel = _viewModelFactory.Invoke(typeof(TViewModel));
 
             CurrentView = viewModel;

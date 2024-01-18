@@ -20,6 +20,8 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel
 
         public RelayCommand NavigateToIncomeRegistraionViewCommand { get; }
 
+        public RelayCommand NavigateToHomeCommand { get; }
+
         #endregion Commands
 
         #region Fields
@@ -53,6 +55,7 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel
             ExitCommand = new RelayCommand(args => true, Exit);
 
             NavigateToIncomeRegistraionViewCommand = new RelayCommand(args => _isConnected, args => _navigationService.NavigateTo<IncomeRegisterViewModel>());
+            NavigateToHomeCommand = new RelayCommand(args => _isConnected, args => _navigationService.NavigateTo<HomeViewModel>());
 
             _clientHost.OnDisconnect += OnDisconnection;
             _clientHost.OnConnect += OnConnection;

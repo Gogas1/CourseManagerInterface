@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:CourseManagerInterface.Presentation.MVVM.View"
              xmlns:viewModel="clr-namespace:CourseManagerInterface.Presentation.MVVM.ViewModel"
              mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance {x:Type viewModel:MenuViewModel}}"
              d:DesignHeight="450" d:DesignWidth="800">
 
     <StackPanel>
@@ -24,8 +25,12 @@
             </MenuItem>
             <MenuItem Header="_Control">
                 <MenuItem 
-                    Header="Create Income" 
+                    Header="_Create Income" 
                     Command="{Binding NavigateToIncomeRegistraionViewCommand}"/>
+            </MenuItem>
+            <MenuItem Header="_Navigation">
+                <MenuItem 
+                    Header="_Home"/>
             </MenuItem>
         </Menu>
     </StackPanel>

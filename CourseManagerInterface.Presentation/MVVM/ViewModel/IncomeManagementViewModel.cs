@@ -1,4 +1,8 @@
 ﻿using CourseManagerInterface.Presentation.Core;
+using CourseManagerInterface.Presentation.Models;
+using CourseManagerInterface.Presentation.Navigation;
+using CourseManagerInterface.Presentation.Requests;
+using CourseManagerInterface.Presentation.Requests.List;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +13,9 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel
 {
     public class IncomeManagementViewModel : Core.ViewModel
     {
+        private readonly RequestsService _requestsService;
+        private readonly NavigationService _navigationService;
+        
         private AsyncObservableCollection<IncomeRecord> _incomes = new();
         public AsyncObservableCollection<IncomeRecord> Incomes
         {
@@ -19,6 +26,77 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel
                 OnPropertyChanged(nameof(Incomes));
             }
         }
+
+        private DateTime _startDate;
+        public DateTime StartDate
+        {
+            get => _startDate;
+            set
+            {
+                _startDate = value;
+                OnPropertyChanged(nameof(StartDate));
+            }
+        }
+
+        private DateTime _endDate;
+        public DateTime EndDate
+        {
+            get => _endDate;
+            set
+            {
+                _endDate = value;
+                OnPropertyChanged(nameof(EndDate));
+            }
+        }
+
+        private bool _isSearching;
+        public bool IsSearching
+        {
+            get => _isSearching;
+            set
+            {
+                _isSearching = value;
+                OnPropertyChanged(nameof(IsSearching));
+            }
+        }
+
+        public RelayCommand SearchIncomesCommand { get; }
+        public RelayCommand ToIncomeCreatingCommand { get; }
+
+        public IncomeManagementViewModel(RequestsService requestsService, NavigationService navigationService)
+        {
+            StartDate = DateTime.Now.AddDays(-1).Date;
+            EndDate = DateTime.Now.AddDays(1).Date.AddMicroseconds(-1);
+
+            _requestsService = requestsService;
+            _navigationService = navigationService;
+
+            SearchIncomesCommand = new RelayCommand(args => StartDate < EndDate, SearchIncomes);
+            ToIncomeCreatingCommand = new RelayCommand(args => true, args => _navigationService.NavigateTo<IncomeRegisterViewModel>());
+        }
+
+        public void ShowSearchResult(IEnumerable<Income> incomesFound)
+        {
+            IsSearching = false;
+            Incomes.Clear();
+            foreach (var income in incomesFound)
+            {
+                IncomeRecord newIncomeRecord = new IncomeRecord(income);
+                Incomes.Add(newIncomeRecord);
+            }
+        }
+
+        private void SearchIncomes(object args)
+        {
+            IncomesSearchRequestArguments requestArguments = new IncomesSearchRequestArguments()
+            {
+                StartDate = this.StartDate, 
+                EndDate = this.EndDate
+            };
+
+            IsSearching = true;
+            _requestsService.MakeRequest<IncomesSearchRequest>(requestArguments);
+        }        
     }
 
     public class IncomeRecord : Core.ViewModel
@@ -34,18 +112,18 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel
             }
         }
 
-        private DateTime _dateTime;
-        public DateTime DateTime
+        private DateTime _createdAt;
+        public DateTime CreatedAt
         {
-            get => _dateTime;
+            get => _createdAt;
             set
             {
-                _dateTime = value;
-                OnPropertyChanged(nameof(DateTime));
+                _createdAt = value;
+                OnPropertyChanged(nameof(CreatedAt));
             }
         }
 
-        private string _supplier;
+        private string _supplier = string.Empty;
         public string Supplier
         {
             get => _supplier;
@@ -65,6 +143,14 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel
                 _summ = value;
                 OnPropertyChanged(nameof(Summ));
             }
+        }
+
+        public IncomeRecord(Income income)
+        {
+            Id = income.Id;
+            CreatedAt = income.CreatedAt;
+            Supplier = income.Supplier;
+            Summ = income.Summ;
         }
     }
 }

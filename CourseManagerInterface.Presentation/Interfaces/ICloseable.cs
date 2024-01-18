@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace CourseManagerInterface.Presentation.Interfaces
 {
-    public interface IDialogWindow : ICloseable
+    public interface ICloseable
     {
-        void SetDialogResult(bool result);
+        void Close();
     }
 }

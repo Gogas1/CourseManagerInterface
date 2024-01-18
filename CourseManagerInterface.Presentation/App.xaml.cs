@@ -11,6 +11,7 @@ using CourseManagerInterface.Presentation.Extensions;
 using CourseManagerInterface.Presentation.Commands;
 using AutoMapper;
 using CourseManagerInterface.Presentation.Mapper;
+using CourseManagerInterface.Presentation.Interfaces;
 
 namespace CourseManagerInterface.Presentation
 {

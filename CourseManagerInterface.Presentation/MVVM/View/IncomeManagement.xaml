@@ -24,14 +24,18 @@
             Orientation="Horizontal">
             <Label 
                 Content="Start:"/>
-            <DatePicker />
+            
+            <DatePicker                 
+                SelectedDate="{Binding StartDate, UpdateSourceTrigger=PropertyChanged}"/>
             <Label 
                 Content="End:"/>
-            <DatePicker />
+            <DatePicker 
+                SelectedDate="{Binding EndDate, UpdateSourceTrigger=PropertyChanged}"/>
             <Button 
                 Content="Search"
                 Padding="10 5 10 5"
-                Margin="10 0 0 0"/>
+                Margin="10 0 0 0"
+                Command="{Binding SearchIncomesCommand}"/>
         </StackPanel>
         <StackPanel
             Grid.Row="0"
@@ -41,19 +45,28 @@
                     Content="Create new"
                     HorizontalAlignment="Left"
                     Padding="10 5 10 5"
-                    Margin="10 0 0 0"/>
+                    Margin="10 0 0 0"
+                    Command="{Binding ToIncomeCreatingCommand}"/>
             </StackPanel>
         </StackPanel>
+        <Label 
+            Grid.Row="1"
+            Grid.Column="0"
+            HorizontalAlignment="Center"
+            Margin="0 10 0 0"
+            Content="Searching"
+            Visibility="{Binding IsSearching, Converter={StaticResource BooleanToVisibilityConverter}}"/>
         <DataGrid
             Grid.Row="1"
             Grid.Column="0"
             IsReadOnly="True"
             AutoGenerateColumns="False"
             Margin="0 10 0 0"
+            Visibility="{Binding IsSearching, Converter={StaticResource InvertedBooleanToVisibilityConverter}}"
             ItemsSource="{Binding Incomes}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}" />
-                <DataGridTextColumn Header="Date" Binding="{Binding DateTime}" />
+                <DataGridTextColumn Header="Date" Binding="{Binding CreatedAt}" />
                 <DataGridTextColumn Header="Supplier" Binding="{Binding Supplier}" />
                 <DataGridTextColumn Header="Summ" Binding="{Binding Summ}" />
             </DataGrid.Columns>            

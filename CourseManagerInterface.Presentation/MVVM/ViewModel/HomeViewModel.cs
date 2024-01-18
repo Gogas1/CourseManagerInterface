@@ -19,7 +19,7 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel
         {
             _navigationService = navigationService;
 
-            
+            IncomesNavigateCommand = new RelayCommand(args => true, args => _navigationService.NavigateTo<IncomeManagementViewModel>());
         }              
     }
 }

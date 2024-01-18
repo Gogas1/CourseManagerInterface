@@ -18,6 +18,12 @@
         <DataTemplate DataType="{x:Type viewModel:IncomeRegisterViewModel}">
             <view:IncomeRegisterView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
+            <view:HomeView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:IncomeManagementViewModel}">
+            <view:IncomeManagement />
+        </DataTemplate>
         <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
         <converters:InvertedBooleanToVisibilityConverter x:Key="InvertedBooleanToVisibilityConverter" />
     </Application.Resources>

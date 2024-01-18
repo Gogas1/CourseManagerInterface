@@ -17,6 +17,7 @@ namespace CourseManagerInterface.Presentation.Extensions
         {
             services.AddKeyedTransient<Command, TestCommand>("testanswer");
             services.AddKeyedTransient<Command, AddIncomeProductFoundCommand>("addincome_productfound");
+            services.AddKeyedTransient<Command, IncomesFoundCommand>("incomes_found");
 
             services.AddSingleton<AddIncomeProductFoundCommandCallbackService>();
 

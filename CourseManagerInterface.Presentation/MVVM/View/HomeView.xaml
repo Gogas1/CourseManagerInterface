@@ -4,24 +4,30 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CourseManagerInterface.Presentation.MVVM.View"
+             xmlns:viewModel="clr-namespace:CourseManagerInterface.Presentation.MVVM.ViewModel"
              mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance {x:Type viewModel:HomeViewModel}}"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <Grid
+        Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
         <StackPanel>
             <Button
-                Margin="10 0 0 0"
-                Padding="5"
+                Margin="10 0 0 0"              
+                Padding="20 5 20 5"
                 Content="Get products list"
+                FontSize="18"
                 HorizontalAlignment="Left"/>
             <Button
                 Margin="10 10 0 0"
-                Padding="5"
+                Padding="20 5 20 5"
+                FontSize="18"
                 Content="Income management"
-                HorizontalAlignment="Left"/>
+                HorizontalAlignment="Left"
+                Command="{Binding IncomesNavigateCommand}"/>
         </StackPanel>
     </Grid>
 </UserControl>
