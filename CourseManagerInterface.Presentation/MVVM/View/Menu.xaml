@@ -30,7 +30,8 @@
             </MenuItem>
             <MenuItem Header="_Navigation">
                 <MenuItem 
-                    Header="_Home"/>
+                    Header="_Home"
+                    Command="{Binding NavigateToHomeCommand}"/>
             </MenuItem>
         </Menu>
     </StackPanel>

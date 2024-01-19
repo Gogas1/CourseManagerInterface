@@ -3,6 +3,7 @@ using CourseManagerInterface.Presentation.Commands.List;
 using CourseManagerInterface.Presentation.Core;
 using CourseManagerInterface.Presentation.Dialogues;
 using CourseManagerInterface.Presentation.MVVM.View.Dialogue;
+using CourseManagerInterface.Presentation.MVVM.ViewModel.Additional;
 using CourseManagerInterface.Presentation.MVVM.ViewModel.Dialogue;
 using CourseManagerInterface.Presentation.Requests;
 using CourseManagerInterface.Presentation.Requests.List;
@@ -29,7 +30,7 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel
             }
         }
 
-        private string _supplier;
+        private string _supplier = string.Empty;
         public string Supplier
         {
             get => _supplier;
@@ -72,21 +73,23 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel
             bool success = showDialog(dialogueViewModel);
             if (success)
             {
+                int id = int.Parse(dialogueViewModel.Id);
                 string name = dialogueViewModel.Name;
                 string? description = dialogueViewModel.Description;
                 double count = double.Parse(dialogueViewModel.Count);
                 decimal price = decimal.Parse(dialogueViewModel.Price);
                 string type = dialogueViewModel.Type;
 
-                AddProductToList(name, description, count, price, type);
+                AddProductToList(id, name, description, count, price, type);
             }
             dialogueViewModel.UnsubscribeEvents();
         }
 
-        private void AddProductToList(string name, string? description, double count, decimal price, string type)
+        private void AddProductToList(int id, string name, string? description, double count, decimal price, string type)
         {
             IncomeProductRecord newProductRecord = new IncomeProductRecord()
             {
+                Id = id,
                 Name = name,
                 Description = description ?? string.Empty,
                 Price = price,
@@ -111,77 +114,5 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel
             _requestsService.MakeRequest<AddIncomeRequest>(requestArguments);
         }
     }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    public class IncomeProductRecord : Core.ViewModel
-    {
-        private int _id;
-        public int Id
-        {
-            get => _id;
-            set
-            {
-                _id = value;
-                OnPropertyChanged(nameof(Id));
-            }
-        }
-
-        private string _name = string.Empty;
-        public string Name
-        {
-            get => _name;
-            set
-            {
-                _name = value;
-                OnPropertyChanged(nameof(Name));
-            }
-        }
-
-        private string _description = string.Empty;
-        public string Description
-        {
-            get => _description;
-            set
-            {
-                _description = value;
-                OnPropertyChanged(nameof(Description));
-            }
-        }
-
-        private double _count;
-        public double Count
-        {
-            get => _count;
-            set
-            {
-                _count = value;
-                OnPropertyChanged(nameof(Count));
-            }
-        }
-
-        private decimal _price;
-        public decimal Price
-        {
-            get => _price;
-            set
-            {
-                _price = value;
-                OnPropertyChanged(nameof(Price));
-            }
-        }
-
-        private string _type = string.Empty;
-        public string Type
-        {
-            get => _type;
-            set
-            {
-                _type = value;
-                OnPropertyChanged(nameof(Type));
-            }
-        }      
-        
-    }
+    
 }

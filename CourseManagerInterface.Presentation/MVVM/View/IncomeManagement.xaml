@@ -15,7 +15,8 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1.5*"/>
         </Grid.RowDefinitions>
 
         <StackPanel 
@@ -56,20 +57,36 @@
             Margin="0 10 0 0"
             Content="Searching"
             Visibility="{Binding IsSearching, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-        <DataGrid
-            Grid.Row="1"
+        <ListView Grid.Row="1"
             Grid.Column="0"
-            IsReadOnly="True"
-            AutoGenerateColumns="False"
-            Margin="0 10 0 0"
             Visibility="{Binding IsSearching, Converter={StaticResource InvertedBooleanToVisibilityConverter}}"
-            ItemsSource="{Binding Incomes}">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Binding="{Binding Id}" />
-                <DataGridTextColumn Header="Date" Binding="{Binding CreatedAt}" />
-                <DataGridTextColumn Header="Supplier" Binding="{Binding Supplier}" />
-                <DataGridTextColumn Header="Summ" Binding="{Binding Summ}" />
-            </DataGrid.Columns>            
-        </DataGrid>
+            ItemsSource="{Binding Incomes}"
+            SelectedItem="{Binding SelectedIncome}"
+            Margin="0 10 0 0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}"/>
+                    <GridViewColumn Header="Date" DisplayMemberBinding="{Binding CreatedAt}" />
+                    <GridViewColumn Header="Supplier" DisplayMemberBinding="{Binding Supplier}" />
+                    <GridViewColumn Header="Summ" DisplayMemberBinding="{Binding Summ}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView
+            Grid.Row="2"
+            Grid.Column="0"            
+            Margin="0 10 0 0"
+            ItemsSource="{Binding IncomeProducts}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" />
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Description}" />
+                    <GridViewColumn Header="Count" DisplayMemberBinding="{Binding Count}" />
+                    <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Price}" />
+                    <GridViewColumn Header="Type" DisplayMemberBinding="{Binding Type}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </UserControl>

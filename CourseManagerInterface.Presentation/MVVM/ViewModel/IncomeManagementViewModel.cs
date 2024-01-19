@@ -1,5 +1,6 @@
 ﻿using CourseManagerInterface.Presentation.Core;
 using CourseManagerInterface.Presentation.Models;
+using CourseManagerInterface.Presentation.MVVM.ViewModel.Additional;
 using CourseManagerInterface.Presentation.Navigation;
 using CourseManagerInterface.Presentation.Requests;
 using CourseManagerInterface.Presentation.Requests.List;
@@ -15,7 +16,18 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel
     {
         private readonly RequestsService _requestsService;
         private readonly NavigationService _navigationService;
-        
+
+        private AsyncObservableCollection<IncomeProductRecord> _incomeProducts = new();
+        public AsyncObservableCollection<IncomeProductRecord> IncomeProducts
+        {
+            get => _incomeProducts;
+            set
+            {
+                _incomeProducts = value;
+                OnPropertyChanged(nameof(IncomeProducts));
+            }
+        }
+
         private AsyncObservableCollection<IncomeRecord> _incomes = new();
         public AsyncObservableCollection<IncomeRecord> Incomes
         {
@@ -24,6 +36,18 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel
             {
                 _incomes = value;
                 OnPropertyChanged(nameof(Incomes));
+            }
+        }
+
+        private IncomeRecord? _selectedIncome;
+        public IncomeRecord? SelectedIncome
+        {
+            get => _selectedIncome;
+            set
+            {
+                _selectedIncome = value;
+                OnPropertyChanged(nameof(SelectedIncome));
+                _requestsService.MakeRequest<GetIncomeProductsRequest>(value?.Id ?? 0);
             }
         }
 
@@ -83,6 +107,24 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel
             {
                 IncomeRecord newIncomeRecord = new IncomeRecord(income);
                 Incomes.Add(newIncomeRecord);
+            }
+        }
+
+        public void ShowIncomeProducts(IEnumerable<IncomeProduct> incomeProducts)
+        {
+            IncomeProducts.Clear();
+            foreach (var incomeProduct in incomeProducts)
+            {
+                IncomeProductRecord newIncomeProductRecord = new IncomeProductRecord
+                {
+                    Id = incomeProduct.Id,
+                    Name = incomeProduct.Name,
+                    Description = incomeProduct.Description,
+                    Type = incomeProduct.Type,
+                    Count = incomeProduct.Count,
+                    Price = incomeProduct.Price
+                };
+                IncomeProducts.Add(newIncomeProductRecord);
             }
         }
 

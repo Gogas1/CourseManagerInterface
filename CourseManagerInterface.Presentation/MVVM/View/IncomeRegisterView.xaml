@@ -15,27 +15,32 @@
             <RowDefinition Height="2*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <DataGrid
-            Grid.Row="0"
-            Grid.Column="0"
-            AutoGenerateColumns="False"
-            IsReadOnly="True"
+        <ListView 
+            Grid.Row="0" 
+            Grid.Column="0" 
             ItemsSource="{Binding IncomeProducts}">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding Id}" />
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
-                <DataGridTextColumn Header="Description" Binding="{Binding Description}" />
-                <DataGridTextColumn Header="Count" Binding="{Binding Count}" />
-                <DataGridTextColumn Header="Price" Binding="{Binding Price}" />
-                <DataGridTextColumn Header="Type" Binding="{Binding Type}" />
-            </DataGrid.Columns>
-            <DataGrid.ContextMenu>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" />
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Description}" />
+                    <GridViewColumn Header="Count" DisplayMemberBinding="{Binding Count}" />
+                    <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Price}" />
+                    <GridViewColumn Header="Type" DisplayMemberBinding="{Binding Type}" />
+                </GridView>
+            </ListView.View>
+            <ListView.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Edit"/>
                     <MenuItem Header="Delete"/>
                 </ContextMenu>
-            </DataGrid.ContextMenu>
-        </DataGrid>
+            </ListView.ContextMenu>
+        </ListView>
         <StackPanel 
             Grid.Row="0"
             Grid.Column="1">
