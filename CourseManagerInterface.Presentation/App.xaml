@@ -24,6 +24,9 @@
         <DataTemplate DataType="{x:Type viewModel:IncomeManagementViewModel}">
             <view:IncomeManagement />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:ProductManagementViewModel}">
+            <view:ProductsManagement />
+        </DataTemplate>
         <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
         <converters:InvertedBooleanToVisibilityConverter x:Key="InvertedBooleanToVisibilityConverter" />
     </Application.Resources>

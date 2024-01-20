@@ -18,9 +18,17 @@
             <RowDefinition Height="1.5*"/>
         </Grid.RowDefinitions>
 
+        <Label 
+            Grid.Row="0"
+            Grid.Column="0"
+            HorizontalAlignment="Center"
+            Margin="0 10 0 0"
+            Content="Searching" 
+            Visibility="{Binding IsSearching, Converter={StaticResource BooleanToVisibilityConverter}}"/>
         <ListView
             Grid.Row="0"
             Grid.Column="0"
+            Visibility="{Binding IsSearching, Converter={StaticResource InvertedBooleanToVisibilityConverter}}"
             ItemsSource="{Binding Products}">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
@@ -32,7 +40,9 @@
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" />
                     <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
                     <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Description}" />
+                    <GridViewColumn Header="Type" DisplayMemberBinding="{Binding Type}" />
                     <GridViewColumn Header="Amount" DisplayMemberBinding="{Binding Amount}" />
+                    <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Price}" />
                 </GridView>
             </ListView.View>
         </ListView>
@@ -45,18 +55,28 @@
                 Margin="10 0 0 0"/>
             <TextBox
                 Margin="10 0 10 10"
+                Text="{Binding SearchName, UpdateSourceTrigger=PropertyChanged}"
                 />
             <Label 
                 Content="Type"
                 Margin="10 0 0 0"/>
             <TextBox
                 Margin="10 0 10 10"
+                Text="{Binding SearchType, UpdateSourceTrigger=PropertyChanged}"
                 />
             <Button 
                 HorizontalAlignment="Left"
                 Padding="10 5 10 5"
                 Margin="10 0 0 0"
                 Content="Search"
+                Command="{Binding SearchProductsCommand}"
+                />
+            <Button 
+                HorizontalAlignment="Left"
+                Padding="10 5 10 5"
+                Margin="10 10 0 0"
+                Content="GetAll"
+                Command="{Binding GetAllProductsCommand}"
                 />
         </StackPanel>
     </Grid>

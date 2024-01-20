@@ -110,7 +110,7 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel
             }
         }
 
-        public void ShowIncomeProducts(IEnumerable<IncomeProduct> incomeProducts)
+        public void ShowIncomeProducts(IEnumerable<Product> incomeProducts)
         {
             IncomeProducts.Clear();
             foreach (var incomeProduct in incomeProducts)
@@ -121,7 +121,7 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel
                     Name = incomeProduct.Name,
                     Description = incomeProduct.Description,
                     Type = incomeProduct.Type,
-                    Count = incomeProduct.Count,
+                    Count = incomeProduct.Amount,
                     Price = incomeProduct.Price
                 };
                 IncomeProducts.Add(newIncomeProductRecord);

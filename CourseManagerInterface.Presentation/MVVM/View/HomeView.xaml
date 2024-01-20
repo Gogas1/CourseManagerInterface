@@ -18,9 +18,10 @@
             <Button
                 Margin="10 0 0 0"              
                 Padding="20 5 20 5"
-                Content="Get products list"
+                Content="Products"
                 FontSize="18"
-                HorizontalAlignment="Left"/>
+                HorizontalAlignment="Left"
+                Command="{Binding ProductsNavigateCommand}"/>
             <Button
                 Margin="10 10 0 0"
                 Padding="20 5 20 5"

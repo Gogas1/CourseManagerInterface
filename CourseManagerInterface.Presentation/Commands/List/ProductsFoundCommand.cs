@@ -9,25 +9,25 @@ using System.Threading.Tasks;
 
 namespace CourseManagerInterface.Presentation.Commands.List
 {
-    public class IncomeProductsFoundCommand : Command
+    public class ProductsFoundCommand : Command
     {
-        private readonly IncomeManagementViewModel _incomeManagementViewModel;
+        private readonly ProductManagementViewModel _productManagementViewModel;
 
-        public IncomeProductsFoundCommand(IncomeManagementViewModel incomeManagementViewModel)
+        public ProductsFoundCommand(ProductManagementViewModel productManagementViewModel)
         {
-            _incomeManagementViewModel = incomeManagementViewModel;
+            _productManagementViewModel = productManagementViewModel;
         }
 
         public override void Execute(string? args)
         {
             CommandData commandData = JsonSerializer.Deserialize<CommandData>(args ?? string.Empty) ?? new CommandData();
-            _incomeManagementViewModel.ShowIncomeProducts(commandData.IncomeProducts);
+
+            _productManagementViewModel.ShowFoundProducts(commandData.FoundProducts);
         }
 
         private class CommandData
         {
-            public List<Product> IncomeProducts { get; set; } = new();
+            public List<Product> FoundProducts { get; set; } = new();
         }
-
     }
 }

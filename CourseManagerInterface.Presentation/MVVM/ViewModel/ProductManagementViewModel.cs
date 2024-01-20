@@ -1,4 +1,7 @@
 ﻿using CourseManagerInterface.Presentation.Core;
+using CourseManagerInterface.Presentation.Models;
+using CourseManagerInterface.Presentation.Requests;
+using CourseManagerInterface.Presentation.Requests.List;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,16 +45,50 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel
             }
         }
 
-        public RelayCommand SearchProductsCommand { get; }
-
-        public ProductManagementViewModel()
+        private bool _isSearching;
+        public bool IsSearching
         {
-            SearchProductsCommand = new RelayCommand(CanSearch, SearchProducts); 
+            get => _isSearching;
+            set
+            {
+                _isSearching = value;
+                OnPropertyChanged(nameof(IsSearching));
+            }
+        }
+
+        public RelayCommand SearchProductsCommand { get; }
+        public RelayCommand GetAllProductsCommand { get; }
+
+        private readonly RequestsService _requestsService;
+
+        public ProductManagementViewModel(RequestsService requestsService)
+        {
+            SearchProductsCommand = new RelayCommand(CanSearch, SearchProducts);
+            GetAllProductsCommand = new RelayCommand(args => true, SearchProducts);
+            _requestsService = requestsService;
+        }
+
+        public void ShowFoundProducts(IEnumerable<Product> foundProducts)
+        {
+            foreach (var item in foundProducts)
+            {
+                ProductRecord productRecord = new ProductRecord(item);
+                Products.Add(productRecord);
+            }
+            IsSearching = false;
         }
 
         private void SearchProducts(object args)
         {
+            IsSearching = true;
+            Products.Clear();
+            SearchProductsRequestArguments arguments = new SearchProductsRequestArguments()
+            {
+                Name = SearchName,
+                Type = SearchType
+            };
 
+            _requestsService.MakeRequest<SearchProductsRequest>(arguments);
         }
 
         private bool CanSearch(object args)
@@ -62,6 +99,16 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel
 
     public class ProductRecord : Core.ViewModel
     {
+        public ProductRecord(Product product)
+        {
+            Id = product.Id;
+            Name = product.Name;
+            Description = product.Description;
+            Amount = product.Amount;
+            Price = product.Price;
+            Type = product.Type;
+        }
+
         private int _id;
         public int Id
         {
@@ -103,6 +150,28 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel
             {
                 _amount = value;
                 OnPropertyChanged(nameof(Amount));
+            }
+        }
+
+        private string _type = string.Empty;
+        public string Type
+        {
+            get => _type;
+            set
+            {
+                _type = value;
+                OnPropertyChanged(nameof(Type));
+            }
+        }
+
+        private decimal _price;
+        public decimal Price
+        {
+            get => _price;
+            set
+            {
+                _price = value;
+                OnPropertyChanged(nameof(Price));
             }
         }
     }
