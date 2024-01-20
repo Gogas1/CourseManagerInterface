@@ -63,6 +63,11 @@
             ItemsSource="{Binding Incomes}"
             SelectedItem="{Binding SelectedIncome}"
             Margin="0 10 0 0">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}"/>
@@ -77,12 +82,17 @@
             Grid.Column="0"            
             Margin="0 10 0 0"
             ItemsSource="{Binding IncomeProducts}">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" />
                     <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
                     <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Description}" />
-                    <GridViewColumn Header="Count" DisplayMemberBinding="{Binding Count}" />
+                    <GridViewColumn Header="Amount" DisplayMemberBinding="{Binding Count}" />
                     <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Price}" />
                     <GridViewColumn Header="Type" DisplayMemberBinding="{Binding Type}" />
                 </GridView>

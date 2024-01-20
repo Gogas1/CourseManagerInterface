@@ -175,6 +175,7 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel.Dialogue
                 Name = Name
             };
 
+            FoundProducts.Clear();
             SearchingFailture = false;
             IsSearching = true;
             ShowSearchResult = false;
@@ -184,8 +185,7 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel.Dialogue
 
         private void ProductFound(AddIncomeProductFoundCommandData commandData)
         {
-            IsSearching = false;
-            FoundProducts.Clear();
+            IsSearching = false;            
             
             if (commandData.ProductFound)
             {
