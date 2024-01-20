@@ -22,7 +22,7 @@ namespace CourseManagerInterface.Presentation.Requests.List
             MasterMessage message = new MasterMessage()
             {
                 Command = "create_income",
-                CommandData = JsonSerializer.Serialize((AddIncomeRequestArguments)args)
+                CommandData = JsonSerializer.Serialize((AddIncomeRequestArguments?)args)
             };
 
             _clientHost.SendMessage(JsonSerializer.Serialize(message));
@@ -32,17 +32,17 @@ namespace CourseManagerInterface.Presentation.Requests.List
     public class AddIncomeRequestArguments
     {
         public DateTime DateTime { get; set; }
-        public string Supplier { get; set; }
+        public string Supplier { get; set; } = string.Empty;
         public List<RequestIncomeProduct> Products { get; set; } = new();
     }
 
     public class RequestIncomeProduct
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
         public double Count { get; set; }
         public decimal Price { get; set; }
-        public string Type { get; set; }
+        public string Type { get; set; } = string.Empty;
     }
 }
