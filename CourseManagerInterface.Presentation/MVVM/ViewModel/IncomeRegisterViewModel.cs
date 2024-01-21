@@ -19,8 +19,8 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel
 {
     public class IncomeRegisterViewModel : Core.ViewModel
     {
-        private ObservableCollection<IncomeProductRecord> _incomeProducts = new ObservableCollection<IncomeProductRecord>();
-        public ObservableCollection<IncomeProductRecord> IncomeProducts
+        private ObservableCollection<Additional.ProductRecord> _incomeProducts = new ObservableCollection<Additional.ProductRecord>();
+        public ObservableCollection<Additional.ProductRecord> IncomeProducts
         {
             get => _incomeProducts;
             set
@@ -73,7 +73,8 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel
             bool success = showDialog(dialogueViewModel);
             if (success)
             {
-                int id = int.Parse(dialogueViewModel.Id);
+                int id;
+                int.TryParse(dialogueViewModel.Id, out id);
                 string name = dialogueViewModel.Name;
                 string? description = dialogueViewModel.Description;
                 double count = double.Parse(dialogueViewModel.Count);
@@ -87,13 +88,13 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel
 
         private void AddProductToList(int id, string name, string? description, double count, decimal price, string type)
         {
-            IncomeProductRecord newProductRecord = new IncomeProductRecord()
+            Additional.ProductRecord newProductRecord = new Additional.ProductRecord()
             {
                 Id = id,
                 Name = name,
                 Description = description ?? string.Empty,
                 Price = price,
-                Count = count,
+                Amount = count,
                 Type = type
             };
 

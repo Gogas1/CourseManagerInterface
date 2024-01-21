@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CourseManagerInterface.Presentation.MVVM.ViewModel.Additional
 {
-    public class IncomeProductRecord : Core.ViewModel
+    public class ProductRecord : Core.ViewModel
     {
         private int _id;
         public int Id
@@ -41,14 +41,14 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel.Additional
             }
         }
 
-        private double _count;
-        public double Count
+        private double _amount;
+        public double Amount
         {
-            get => _count;
+            get => _amount;
             set
             {
-                _count = value;
-                OnPropertyChanged(nameof(Count));
+                _amount = value;
+                OnPropertyChanged(nameof(Amount));
             }
         }
 

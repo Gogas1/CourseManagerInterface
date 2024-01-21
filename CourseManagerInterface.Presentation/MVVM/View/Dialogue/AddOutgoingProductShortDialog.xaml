@@ -8,24 +8,137 @@
         mc:Ignorable="d"
         x:Name="DialogWindow"
         d:DataContext="{d:DesignInstance {x:Type viewModel:AddOutgoingProductShortDialogViewModel}}"
-        Title="AddOutgoingProductShortDialog" Height="187" Width="379">
-    <Grid>
+        Title="Add product" 
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Height="404" 
+        Width="678">
+    <Grid Margin="10">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1.5*"/>
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1.5*"/>
+        </Grid.RowDefinitions>
+        <TextBox />
+        <Label 
+            Grid.Row="0"
+            Grid.Column="0"
+            HorizontalAlignment="Center"
+            Margin="0 10 0 0"
+            Content="Searching" 
+            Visibility="{Binding IsSearching, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+        <ListView
+            Grid.Row="0"
+            Grid.Column="0"
+            Visibility="{Binding IsSearching, Converter={StaticResource InvertedBooleanToVisibilityConverter}}"
+            ItemsSource="{Binding Products}"
+            SelectedItem="{Binding SelectedProduct}">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" />
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Description}" />
+                    <GridViewColumn Header="Type" DisplayMemberBinding="{Binding Type}" />
+                    <GridViewColumn Header="Amount" DisplayMemberBinding="{Binding Amount}" />
+                    <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Price}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
         <StackPanel
-            Grid.Column="1"
-            Orientation="Vertical"
-            VerticalAlignment="Center">
+            Grid.Row="0"
+            Grid.Column="1">
             <Label 
-                Content="Id:"/>
-            <TextBox 
-                Text="{Binding Id, UpdateSourceTrigger=PropertyChanged}"/>
+                Content="Id search"
+                Margin="10 0 0 0"/>
+            <TextBox
+                Margin="10 0 10 10"
+                Text="{Binding IdSearch, UpdateSourceTrigger=PropertyChanged}"
+            />
+            <Label 
+                Content="Name search"
+                Margin="10 0 0 0"/>
+            <TextBox
+                Margin="10 0 10 10"
+                Text="{Binding NameSearch, UpdateSourceTrigger=PropertyChanged}"
+            />
+            <Button 
+                HorizontalAlignment="Left"
+                Padding="10 5 10 5"
+                Margin="10 0 0 0"
+                Content="Search"
+                Command="{Binding SearchProductsCommand}"
+            />
+            <Button 
+                HorizontalAlignment="Left"
+                Padding="10 5 10 5"
+                Margin="10 10 0 0"
+                Content="GetAll"
+            />
         </StackPanel>
+        <Grid
+            Grid.Row="1"
+            Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <StackPanel
+                Grid.Column="0"
+                Grid.Row="0"
+                Margin="0 0 10 0">
+                <Label 
+                    Content="Id"/>
+                <TextBox 
+                    IsEnabled="False"
+                    Text="{Binding FinalProduct.Id, Mode=OneWay}"/>
+            </StackPanel>
+            <StackPanel
+                Grid.Column="1"
+                Grid.Row="0"
+                Margin="0 0 10 0">
+                <Label 
+                    Content="Name"/>
+                <TextBox 
+                    IsEnabled="False"
+                    Text="{Binding FinalProduct.Name, Mode=OneWay}"/>
+            </StackPanel>
+            <StackPanel
+                Grid.Column="2"
+                Grid.Row="0"
+                Margin="0 0 10 0">
+                <Label 
+                    Content="Amount"/>
+                <TextBox 
+                    IsEnabled="True"
+                    Text="{Binding FinalProduct.Amount, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            <StackPanel
+                Grid.Column="0"
+                Grid.Row="1"
+                Margin="0 0 10 0">
+                <Label 
+                    Content="Price"/>
+                <TextBox 
+                    IsEnabled="False"
+                    Text="{Binding FinalProduct.Price, Mode=OneWay}"/>
+            </StackPanel>
+        </Grid>
         <StackPanel
-            Grid.ColumnSpan="3"
+            Grid.Row="1"
+            Grid.Column="1"
             Orientation="Horizontal"
             HorizontalAlignment="Right"
             VerticalAlignment="Bottom">
@@ -42,5 +155,6 @@
                 IsCancel="True"
                 Content="Cancel"/>
         </StackPanel>
+
     </Grid>
 </Window>

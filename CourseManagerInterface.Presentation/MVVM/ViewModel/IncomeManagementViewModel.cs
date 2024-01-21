@@ -17,8 +17,8 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel
         private readonly RequestsService _requestsService;
         private readonly NavigationService _navigationService;
 
-        private AsyncObservableCollection<IncomeProductRecord> _incomeProducts = new();
-        public AsyncObservableCollection<IncomeProductRecord> IncomeProducts
+        private AsyncObservableCollection<Additional.ProductRecord> _incomeProducts = new();
+        public AsyncObservableCollection<Additional.ProductRecord> IncomeProducts
         {
             get => _incomeProducts;
             set
@@ -115,13 +115,13 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel
             IncomeProducts.Clear();
             foreach (var incomeProduct in incomeProducts)
             {
-                IncomeProductRecord newIncomeProductRecord = new IncomeProductRecord
+                Additional.ProductRecord newIncomeProductRecord = new Additional.ProductRecord
                 {
                     Id = incomeProduct.Id,
                     Name = incomeProduct.Name,
                     Description = incomeProduct.Description,
                     Type = incomeProduct.Type,
-                    Count = incomeProduct.Amount,
+                    Amount = incomeProduct.Amount,
                     Price = incomeProduct.Price
                 };
                 IncomeProducts.Add(newIncomeProductRecord);

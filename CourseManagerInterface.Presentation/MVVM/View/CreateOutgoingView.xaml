@@ -20,7 +20,9 @@
 
         <ListView
             Grid.Row="0"
-            Grid.Column="0">
+            Grid.Column="0"
+            ItemsSource="{Binding Products}"
+            SelectedItem="{Binding SelectedProduct}">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -28,35 +30,75 @@
             </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="ID" />
-                    <GridViewColumn Header="Name" />
-                    <GridViewColumn Header="Description" />
-                    <GridViewColumn Header="Type" />
-                    <GridViewColumn Header="Amount" />
-                    <GridViewColumn Header="Price" />
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}"/>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Description}"/>
+                    <GridViewColumn Header="Type" DisplayMemberBinding="{Binding Type}"/>
+                    <GridViewColumn Header="Amount" DisplayMemberBinding="{Binding Amount}"/>
+                    <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Price}"/>
                 </GridView>
             </ListView.View>
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem 
+                        Header="Delete"
+                        Command="{Binding RemoveSelectedProductCommand}"/>
+                </ContextMenu>
+            </ListView.ContextMenu>
         </ListView>
         <StackPanel
             Grid.Row="0"
             Grid.Column="1">
-            <Button 
-                HorizontalAlignment="Left"
-                Content="Add by Id"
-                Padding="10 5 10 5"
-                Margin="10 0 0 0"/>
-            <Button 
-                HorizontalAlignment="Left"
-                Content="Search and add"
-                Padding="10 5 10 5"
-                Margin="10 10 0 0"/>
+            <Label 
+                Margin="10 0 0 0"
+                Content="Manager:"/>
+            <TextBox 
+                Margin="10 0 0 0"
+                Text="{Binding Manager, UpdateSourceTrigger=PropertyChanged}"/>
+            <Label 
+                FontSize="18"
+                Content="Submitting..."
+                HorizontalAlignment="Center"
+                Visibility="{Binding IsSubmitting, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+            <StackPanel
+                Visibility="{Binding IsSubmitted, Converter={StaticResource BooleanToVisibilityConverter}}"
+                HorizontalAlignment="Center">
+                <Label 
+                    FontSize="18"
+                    Content="Submitted"
+                    Foreground="Green"
+                    />
+                <Button 
+                    FontSize="18"
+                    Padding="10 5 10 5"
+                    Margin="0 10 0 0"
+                    Content="Finish"
+                    Command="{Binding ResetCommand}"/>
+            </StackPanel>
+            <StackPanel
+                Visibility="{Binding IsCanceled, Converter={StaticResource BooleanToVisibilityConverter}}"
+                HorizontalAlignment="Center">
+                <Label 
+                    FontSize="18"
+                    Content="Canceled"
+                    Foreground="Red"
+                />
+                <Button 
+                    FontSize="18"
+                    Padding="10 5 10 5"
+                    Margin="0 10 0 0"
+                    Content="Finish"
+                    Command="{Binding ResetCommand}"/>
+            </StackPanel>
+
         </StackPanel>
         <Button
             Grid.Column="0"
             Grid.Row="1"
             Margin="0 10 0 0"
             FontSize="26"
-            Content="Add product"/>
+            Content="Add product"
+            Command="{Binding ShowDialogAddProductFastCommand}"/>
         <Grid
             Grid.Row="1"
             Grid.Column="1">
@@ -66,7 +108,7 @@
             </Grid.ColumnDefinitions>
             <Label
                 Grid.Column="0"
-                Content="Summ: 24.1"
+                Content="{Binding Summ}"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center"
                 FontSize="24"/>
@@ -74,7 +116,8 @@
                 Grid.Column="1"
                 FontSize="26"
                 Margin="0 10 0 0"
-                Content="Submit"/>
+                Content="Submit"
+                Command="{Binding SubmitOutgoingCommand}"/>
         </Grid>
     </Grid>
 </UserControl>

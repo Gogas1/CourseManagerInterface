@@ -29,7 +29,8 @@
             Grid.Row="0"
             Grid.Column="0"
             Visibility="{Binding IsSearching, Converter={StaticResource InvertedBooleanToVisibilityConverter}}"
-            ItemsSource="{Binding Products}">
+            ItemsSource="{Binding Products}"
+            SelectedItem="{Binding SelectedProduct}">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -78,6 +79,37 @@
                 Content="GetAll"
                 Command="{Binding GetAllProductsCommand}"
                 />
+        </StackPanel>
+
+        <StackPanel
+            Grid.Row="1"
+            Grid.Column="0"
+            Orientation="Vertical">
+            <Label 
+                Content="Features:"/>
+            <StackPanel>
+                <Label 
+                    Content="Type"/>
+                <TextBox 
+                    HorizontalAlignment="Left"
+                    Width="80"
+                    Text="{Binding TypeFeature, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            <StackPanel
+                Margin="0 0 0 0">
+                <Label 
+                    Content="Price"/>
+                <TextBox 
+                    HorizontalAlignment="Left"
+                    Width="80"
+                    Text="{Binding PriceFeature, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            <Button 
+                HorizontalAlignment="Left"
+                Margin="0 10 0 0"
+                Padding="10 5 10 5"
+                Content="Save"
+                Command="{Binding SaveProductFeaturesCommand}"/>
         </StackPanel>
     </Grid>
 </UserControl>

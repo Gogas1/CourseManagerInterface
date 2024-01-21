@@ -23,6 +23,7 @@ namespace CourseManagerInterface.Presentation.Extensions
             services.AddSingleton<HomeViewModel>();
             services.AddSingleton<IncomeManagementViewModel>();
             services.AddSingleton<ProductManagementViewModel>();
+            services.AddSingleton<CreateOutgoingViewModel>();
 
             services.AddSingleton<Func<Type, ViewModel>>(serviceProvider => viewModelType => (ViewModel)serviceProvider.GetRequiredService(viewModelType));
         }

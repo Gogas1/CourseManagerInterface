@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace CourseManagerInterface.Presentation.Commands.List
 {
-    public class ProductsFoundCommand : Command
+    public class ManagementProductsFoundCommand : Command
     {
         private readonly ProductManagementViewModel _productManagementViewModel;
 
-        public ProductsFoundCommand(ProductManagementViewModel productManagementViewModel)
+        public ManagementProductsFoundCommand(ProductManagementViewModel productManagementViewModel)
         {
             _productManagementViewModel = productManagementViewModel;
         }

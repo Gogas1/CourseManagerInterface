@@ -169,9 +169,12 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel.Dialogue
 
         private void Search(object args)
         {
+            int id;
+            int.TryParse(Id, out id);
+
             SearchProductRequestArguments arguments = new SearchProductRequestArguments()
             {
-                Id = int.Parse(Id),
+                Id = id,
                 Name = Name
             };
 
@@ -250,25 +253,7 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel.Dialogue
 
         private bool CanSearch(object args)
         {
-            try
-            {
-                if(!string.IsNullOrEmpty(Name))
-                {
-                    return true;
-                }
-                else if(!string.IsNullOrEmpty(Id))
-                {
-                    int.Parse(Id);
-
-                    return true;
-                }
-            }
-            catch
-            {
-                return false;
-            }
-
-            return false;
+            return int.TryParse(Id, out int _) || !string.IsNullOrEmpty(Name);
         }
 
         #endregion CommandsCondiditons
