@@ -1,0 +1,80 @@
+﻿<UserControl x:Class="CourseManagerInterface.Presentation.MVVM.View.CreateOutgoingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CourseManagerInterface.Presentation.MVVM.View"
+             xmlns:viewModels="clr-namespace:CourseManagerInterface.Presentation.MVVM.ViewModel"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance {x:Type viewModels:CreateOutgoingViewModel}}"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1.5*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3.5*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <ListView
+            Grid.Row="0"
+            Grid.Column="0">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" />
+                    <GridViewColumn Header="Name" />
+                    <GridViewColumn Header="Description" />
+                    <GridViewColumn Header="Type" />
+                    <GridViewColumn Header="Amount" />
+                    <GridViewColumn Header="Price" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <StackPanel
+            Grid.Row="0"
+            Grid.Column="1">
+            <Button 
+                HorizontalAlignment="Left"
+                Content="Add by Id"
+                Padding="10 5 10 5"
+                Margin="10 0 0 0"/>
+            <Button 
+                HorizontalAlignment="Left"
+                Content="Search and add"
+                Padding="10 5 10 5"
+                Margin="10 10 0 0"/>
+        </StackPanel>
+        <Button
+            Grid.Column="0"
+            Grid.Row="1"
+            Margin="0 10 0 0"
+            FontSize="26"
+            Content="Add product"/>
+        <Grid
+            Grid.Row="1"
+            Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Label
+                Grid.Column="0"
+                Content="Summ: 24.1"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                FontSize="24"/>
+            <Button 
+                Grid.Column="1"
+                FontSize="26"
+                Margin="0 10 0 0"
+                Content="Submit"/>
+        </Grid>
+    </Grid>
+</UserControl>

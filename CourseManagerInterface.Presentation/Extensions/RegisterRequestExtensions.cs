@@ -19,6 +19,7 @@ namespace CourseManagerInterface.Presentation.Extensions
             services.AddScoped<IncomesSearchRequest>();
             services.AddScoped<GetIncomeProductsRequest>();
             services.AddScoped<SearchProductsRequest>();
+            services.AddScoped<GetOugoingProductFastRequest>();
 
             services.AddSingleton<RequestsService>();
 

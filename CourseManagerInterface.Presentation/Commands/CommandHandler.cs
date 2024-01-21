@@ -30,7 +30,7 @@ namespace CourseManagerInterface.Presentation.Commands
                 var targetCommand = _commandFactory.Invoke(masterMessage.Command);
                 targetCommand?.Execute(masterMessage.CommandData);
             }
-            catch (Exception ex)
+            catch
             {
 
             }          

@@ -19,18 +19,11 @@ namespace CourseManagerInterface.Presentation.Commands.List
 
         public override void Execute(string? args)
         {
-            try
-            {
-                TestCommandData? data = JsonSerializer.Deserialize<TestCommandData>(args ?? string.Empty);
+            TestCommandData? data = JsonSerializer.Deserialize<TestCommandData>(args ?? string.Empty);
 
-                if(data != null)
-                {
-                    _viewModel.SetTime(data.DateTime);
-                }
-            }
-            catch (Exception ex)
+            if (data != null)
             {
-
+                _viewModel.SetTime(data.DateTime);
             }
         }
     }
