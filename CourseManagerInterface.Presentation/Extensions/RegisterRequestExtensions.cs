@@ -23,6 +23,7 @@ namespace CourseManagerInterface.Presentation.Extensions
             services.AddScoped<SubmitOutgoingRequest>();
             services.AddScoped<SearchProductsOutgoingRequest>();
             services.AddScoped<SaveProductFeaturesRequest>();
+            services.AddScoped<SearchOutgoingsRequest>();
 
             services.AddSingleton<RequestsService>();
 

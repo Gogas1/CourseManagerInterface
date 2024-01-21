@@ -1,0 +1,68 @@
+﻿<UserControl x:Class="CourseManagerInterface.Presentation.MVVM.View.OutgoingManagementView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CourseManagerInterface.Presentation.MVVM.View"
+             xmlns:viewModels="clr-namespace:CourseManagerInterface.Presentation.MVVM.ViewModel"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance {x:Type viewModels:OutgoingManagementViewModel}}"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1.5*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel 
+            Grid.Row="0"
+            Grid.Column="0"
+            Orientation="Horizontal">
+            <Label 
+                Content="Start:"/>
+
+            <DatePicker                 
+                SelectedDate="{Binding StartDate, UpdateSourceTrigger=PropertyChanged}"/>
+            <Label 
+                Content="End:"/>
+            <DatePicker 
+                SelectedDate="{Binding EndDate, UpdateSourceTrigger=PropertyChanged}"/>
+            <Button 
+                Content="Search"
+                Padding="10 5 10 5"
+                Margin="10 0 0 0"
+                Command="{Binding SearchOutgoingsCommand}"/>
+        </StackPanel>
+        <Label 
+            Grid.Row="1"
+            Grid.Column="0"
+            HorizontalAlignment="Center"
+            Margin="0 10 0 0"
+            Content="Searching"
+            Visibility="{Binding IsSearching, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+        <ListView Grid.Row="1"
+            Grid.Column="0"
+            Visibility="{Binding IsSearching, Converter={StaticResource InvertedBooleanToVisibilityConverter}}"
+            ItemsSource="{Binding Outgoings}"
+            SelectedItem="{Binding SelectedOutgoing}"
+            Margin="0 10 0 0">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}"/>
+                    <GridViewColumn Header="Date" DisplayMemberBinding="{Binding CreatedAt}" />
+                    <GridViewColumn Header="Manager" DisplayMemberBinding="{Binding Manager}" />
+                    <GridViewColumn Header="Summ" DisplayMemberBinding="{Binding Summ}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</UserControl>

@@ -15,6 +15,7 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel
         public RelayCommand ProductsNavigateCommand { get; }
         public RelayCommand IncomesNavigateCommand { get; }
         public RelayCommand CreateOutgoingNavigateCommand { get; }
+        public RelayCommand OutgoingsNavigateCommand { get; }
 
         public HomeViewModel(NavigationService navigationService)
         {
@@ -23,6 +24,7 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel
             IncomesNavigateCommand = new RelayCommand(args => true, args => _navigationService.NavigateTo<IncomeManagementViewModel>());
             ProductsNavigateCommand = new RelayCommand(args => true, args => _navigationService.NavigateTo<ProductManagementViewModel>());
             CreateOutgoingNavigateCommand = new RelayCommand(args => true, args => _navigationService.NavigateTo<CreateOutgoingViewModel>());
+            OutgoingsNavigateCommand = new RelayCommand(args => true, args => _navigationService.NavigateTo<OutgoingManagementViewModel>());
         }              
     }
 }

@@ -30,6 +30,9 @@
         <DataTemplate DataType="{x:Type viewModel:CreateOutgoingViewModel}">
             <view:CreateOutgoingView />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:OutgoingManagementViewModel}">
+            <view:OutgoingManagementView />
+        </DataTemplate>
         <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
         <converters:InvertedBooleanToVisibilityConverter x:Key="InvertedBooleanToVisibilityConverter" />
     </Application.Resources>
