@@ -38,6 +38,7 @@ namespace CourseManagerInterface.Presentation.Networking
 
         public void Connect()
         {
+            _tcpClient = new TcpClient();
             _tcpClient.BeginConnect(IPAddress.Parse(_host), _port, ConnectCallback, null);
         }
 
