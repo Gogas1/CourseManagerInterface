@@ -18,7 +18,7 @@
             <Button
                 Margin="10 0 0 0"              
                 Padding="20 5 20 5"
-                Content="Products"
+                Content="Продукти"
                 FontSize="18"
                 HorizontalAlignment="Left"
                 Command="{Binding ProductsNavigateCommand}"/>
@@ -26,21 +26,21 @@
                 Margin="10 10 0 0"
                 Padding="20 5 20 5"
                 FontSize="18"
-                Content="Income management"
+                Content="Отримання"
                 HorizontalAlignment="Left"
                 Command="{Binding IncomesNavigateCommand}"/>
             <Button
                 Margin="10 10 0 0"
                 Padding="20 5 20 5"
                 FontSize="18"
-                Content="Create outgoing"
+                Content="Створення витрати"
                 HorizontalAlignment="Left"
                 Command="{Binding CreateOutgoingNavigateCommand}"/>
             <Button
                 Margin="10 10 0 0"
                 Padding="20 5 20 5" 
                 FontSize="18"
-                Content="Outgoing management"
+                Content="Витрати"
                 HorizontalAlignment="Left"
                 Command="{Binding OutgoingsNavigateCommand}"/>
         </StackPanel>

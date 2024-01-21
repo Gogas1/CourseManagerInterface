@@ -23,16 +23,16 @@
             Grid.Column="0"
             Orientation="Horizontal">
             <Label 
-                Content="Start:"/>
+                Content="Початкова:"/>
 
             <DatePicker                 
                 SelectedDate="{Binding StartDate, UpdateSourceTrigger=PropertyChanged}"/>
             <Label 
-                Content="End:"/>
+                Content="Кінцева:"/>
             <DatePicker 
                 SelectedDate="{Binding EndDate, UpdateSourceTrigger=PropertyChanged}"/>
             <Button 
-                Content="Search"
+                Content="Пошук"
                 Padding="10 5 10 5"
                 Margin="10 0 0 0"
                 Command="{Binding SearchOutgoingsCommand}"/>
@@ -42,7 +42,7 @@
             Grid.Column="0"
             HorizontalAlignment="Center"
             Margin="0 10 0 0"
-            Content="Searching"
+            Content="Пошук..."
             Visibility="{Binding IsSearching, Converter={StaticResource BooleanToVisibilityConverter}}"/>
         <ListView Grid.Row="1"
             Grid.Column="0"
@@ -58,9 +58,9 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}"/>
-                    <GridViewColumn Header="Date" DisplayMemberBinding="{Binding CreatedAt}" />
-                    <GridViewColumn Header="Manager" DisplayMemberBinding="{Binding Manager}" />
-                    <GridViewColumn Header="Summ" DisplayMemberBinding="{Binding Summ}" />
+                    <GridViewColumn Header="Дата" DisplayMemberBinding="{Binding CreatedAt}" />
+                    <GridViewColumn Header="Керівник" DisplayMemberBinding="{Binding Manager}" />
+                    <GridViewColumn Header="Сума" DisplayMemberBinding="{Binding Summ}" />
                 </GridView>
             </ListView.View>
         </ListView>

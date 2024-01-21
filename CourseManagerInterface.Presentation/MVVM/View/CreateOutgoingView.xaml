@@ -31,17 +31,17 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}"/>
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
-                    <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Description}"/>
-                    <GridViewColumn Header="Type" DisplayMemberBinding="{Binding Type}"/>
-                    <GridViewColumn Header="Amount" DisplayMemberBinding="{Binding Amount}"/>
-                    <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Price}"/>
+                    <GridViewColumn Header="Назва" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Опис" DisplayMemberBinding="{Binding Description}"/>
+                    <GridViewColumn Header="Тип" DisplayMemberBinding="{Binding Type}"/>
+                    <GridViewColumn Header="Кількість" DisplayMemberBinding="{Binding Amount}"/>
+                    <GridViewColumn Header="Ціна" DisplayMemberBinding="{Binding Price}"/>
                 </GridView>
             </ListView.View>
             <ListView.ContextMenu>
                 <ContextMenu>
                     <MenuItem 
-                        Header="Delete"
+                        Header="Видалити"
                         Command="{Binding RemoveSelectedProductCommand}"/>
                 </ContextMenu>
             </ListView.ContextMenu>
@@ -51,13 +51,13 @@
             Grid.Column="1">
             <Label 
                 Margin="10 0 0 0"
-                Content="Manager:"/>
+                Content="Керівник:"/>
             <TextBox 
                 Margin="10 0 0 0"
                 Text="{Binding Manager, UpdateSourceTrigger=PropertyChanged}"/>
             <Label 
                 FontSize="18"
-                Content="Submitting..."
+                Content="Затвердження продажу..."
                 HorizontalAlignment="Center"
                 Visibility="{Binding IsSubmitting, Converter={StaticResource BooleanToVisibilityConverter}}"/>
             <StackPanel
@@ -65,14 +65,14 @@
                 HorizontalAlignment="Center">
                 <Label 
                     FontSize="18"
-                    Content="Submitted"
+                    Content="Затверджено"
                     Foreground="Green"
                     />
                 <Button 
                     FontSize="18"
                     Padding="10 5 10 5"
                     Margin="0 10 0 0"
-                    Content="Finish"
+                    Content="Завершити"
                     Command="{Binding ResetCommand}"/>
             </StackPanel>
             <StackPanel
@@ -80,14 +80,14 @@
                 HorizontalAlignment="Center">
                 <Label 
                     FontSize="18"
-                    Content="Canceled"
+                    Content="Відхилено"
                     Foreground="Red"
                 />
                 <Button 
                     FontSize="18"
                     Padding="10 5 10 5"
                     Margin="0 10 0 0"
-                    Content="Finish"
+                    Content="Завершити"
                     Command="{Binding ResetCommand}"/>
             </StackPanel>
 
@@ -97,7 +97,7 @@
             Grid.Row="1"
             Margin="0 10 0 0"
             FontSize="26"
-            Content="Add product"
+            Content="Додати продукт"
             Command="{Binding ShowDialogAddProductFastCommand}"/>
         <Grid
             Grid.Row="1"
@@ -116,7 +116,7 @@
                 Grid.Column="1"
                 FontSize="26"
                 Margin="0 10 0 0"
-                Content="Submit"
+                Content="Підтвердити"
                 Command="{Binding SubmitOutgoingCommand}"/>
         </Grid>
     </Grid>

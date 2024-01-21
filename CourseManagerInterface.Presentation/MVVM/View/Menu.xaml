@@ -16,21 +16,18 @@
                     Header="_Підключитися"
                     Command="{Binding ConnectCommand}"/>
                 <MenuItem 
-                    Header="_Disconnect"
+                    Header="_Відключитися"
                     Command="{Binding DisconnectCommand}"/>
                 <Separator />
-                <MenuItem 
-                    Header="_Exit" 
-                    Command="{Binding ExitCommand}"/>
             </MenuItem>
-            <MenuItem Header="_Control">
+            <MenuItem Header="_Дії">
                 <MenuItem 
-                    Header="_Create Income" 
+                    Header="_Зареєструвати отримання" 
                     Command="{Binding NavigateToIncomeRegistraionViewCommand}"/>
             </MenuItem>
-            <MenuItem Header="_Navigation">
+            <MenuItem Header="_Навігація">
                 <MenuItem 
-                    Header="_Home"
+                    Header="_Головна"
                     Command="{Binding NavigateToHomeCommand}"/>
             </MenuItem>
         </Menu>

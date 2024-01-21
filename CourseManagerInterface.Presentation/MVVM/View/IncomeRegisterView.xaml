@@ -27,11 +27,11 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" />
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
-                    <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Description}" />
-                    <GridViewColumn Header="Count" DisplayMemberBinding="{Binding Amount}" />
-                    <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Price}" />
-                    <GridViewColumn Header="Type" DisplayMemberBinding="{Binding Type}" />
+                    <GridViewColumn Header="Назва" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Опис" DisplayMemberBinding="{Binding Description}" />
+                    <GridViewColumn Header="Кількість" DisplayMemberBinding="{Binding Amount}" />
+                    <GridViewColumn Header="Ціна" DisplayMemberBinding="{Binding Price}" />
+                    <GridViewColumn Header="Тип" DisplayMemberBinding="{Binding Type}" />
                 </GridView>
             </ListView.View>
             <ListView.ContextMenu>
@@ -76,7 +76,7 @@
             />
             <Label 
                 FontSize="18"
-                Content="Submitting..."
+                Content="Реєстрація..."
                 HorizontalAlignment="Center"
                 Visibility="{Binding IsSubmitting, Converter={StaticResource BooleanToVisibilityConverter}}"/>
             <StackPanel
@@ -84,7 +84,7 @@
                 HorizontalAlignment="Center">
                 <Label 
                     FontSize="18"
-                    Content="Submitted"
+                    Content="Зареєстровано"
                     Foreground="Green"
                 />
             </StackPanel>
@@ -93,7 +93,7 @@
                 HorizontalAlignment="Center">
                 <Label 
                     FontSize="18"
-                    Content="Canceled"
+                    Content="Відхилено"
                     Foreground="Red"
                 />
             </StackPanel>
