@@ -1,17 +1,13 @@
-﻿using CourseManagerInterface.Presentation.Core;
+﻿using AutoMapper;
+using CourseManagerInterface.Presentation.Commands;
+using CourseManagerInterface.Presentation.Extensions;
+using CourseManagerInterface.Presentation.Mapper;
 using CourseManagerInterface.Presentation.MVVM.ViewModel;
 using CourseManagerInterface.Presentation.Navigation;
-using Microsoft.Extensions.DependencyInjection;
-using System.Configuration;
-using System.Data;
-using System.Windows;
-using Microsoft.Extensions.Configuration;
 using CourseManagerInterface.Presentation.Networking;
-using CourseManagerInterface.Presentation.Extensions;
-using CourseManagerInterface.Presentation.Commands;
-using AutoMapper;
-using CourseManagerInterface.Presentation.Mapper;
-using CourseManagerInterface.Presentation.Interfaces;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using System.Windows;
 
 namespace CourseManagerInterface.Presentation
 {

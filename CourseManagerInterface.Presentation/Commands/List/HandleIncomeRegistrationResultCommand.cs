@@ -1,11 +1,5 @@
-﻿using CourseManagerInterface.Presentation.Core;
-using CourseManagerInterface.Presentation.MVVM.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using CourseManagerInterface.Presentation.MVVM.ViewModel;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace CourseManagerInterface.Presentation.Commands.List
 {

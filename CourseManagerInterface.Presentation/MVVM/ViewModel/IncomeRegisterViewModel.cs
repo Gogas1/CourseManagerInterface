@@ -2,20 +2,12 @@
 using CourseManagerInterface.Presentation.Commands.List;
 using CourseManagerInterface.Presentation.Core;
 using CourseManagerInterface.Presentation.Dialogues;
-using CourseManagerInterface.Presentation.Models;
 using CourseManagerInterface.Presentation.MVVM.View.Dialogue;
-using CourseManagerInterface.Presentation.MVVM.ViewModel.Additional;
 using CourseManagerInterface.Presentation.MVVM.ViewModel.Dialogue;
 using CourseManagerInterface.Presentation.Navigation;
 using CourseManagerInterface.Presentation.Requests;
 using CourseManagerInterface.Presentation.Requests.List;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace CourseManagerInterface.Presentation.MVVM.ViewModel
 {
@@ -86,7 +78,7 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel
 
         public IncomeRegisterViewModel(DialogueService dialogueService, RequestsService requestsService, IMapper mapper, AddIncomeProductFoundCommandCallbackService productFoundCallbackService, NavigationService navigationService)
         {
-            _dialogueService = dialogueService;            
+            _dialogueService = dialogueService;
             _requestsService = requestsService;
             _mapper = mapper;
             _productFoundCallbackService = productFoundCallbackService;
@@ -170,5 +162,5 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel
             IsSubmitting = IsCanceled = IsSubmitted = false;
         }
     }
-    
+
 }

@@ -1,10 +1,4 @@
 ﻿using CourseManagerInterface.Presentation.Navigation;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CourseManagerInterface.Presentation.MVVM.ViewModel
 {
@@ -13,8 +7,8 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel
         public MenuViewModel MenuViewModel { get; set; }
 
         private NavigationService _navigation;
-        public NavigationService Navigation 
-        { 
+        public NavigationService Navigation
+        {
             get => _navigation;
             set
             {

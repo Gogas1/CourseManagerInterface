@@ -3,13 +3,6 @@ using CourseManagerInterface.Presentation.Core;
 using CourseManagerInterface.Presentation.Interfaces;
 using CourseManagerInterface.Presentation.Requests;
 using CourseManagerInterface.Presentation.Requests.List;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Threading;
 
 namespace CourseManagerInterface.Presentation.MVVM.ViewModel.Dialogue
 {
@@ -86,7 +79,7 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel.Dialogue
                 _type = value;
                 OnPropertyChanged(nameof(Type));
             }
-        }       
+        }
 
         private bool _isSearching;
         public bool IsSearching
@@ -188,12 +181,12 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel.Dialogue
 
         private void ProductFound(AddIncomeProductFoundCommandData commandData)
         {
-            IsSearching = false;            
-            
+            IsSearching = false;
+
             if (commandData.ProductFound)
             {
                 ShowSearchResult = true;
-                foreach(var product in commandData.FoundProducts)
+                foreach (var product in commandData.FoundProducts)
                 {
                     var foundProduct = new ComboboxProductItem()
                     {
@@ -213,7 +206,7 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel.Dialogue
 
         private void ProductSelected()
         {
-            if(SelectedProduct != null) 
+            if (SelectedProduct != null)
             {
                 Id = SelectedProduct.Id.ToString();
                 Name = SelectedProduct.Name;
@@ -235,7 +228,7 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel.Dialogue
         {
             try
             {
-                if(!string.IsNullOrEmpty(Name) && !string.IsNullOrEmpty(Type)) 
+                if (!string.IsNullOrEmpty(Name) && !string.IsNullOrEmpty(Type))
                 {
                     double.Parse(Count);
                     decimal.Parse(Price);

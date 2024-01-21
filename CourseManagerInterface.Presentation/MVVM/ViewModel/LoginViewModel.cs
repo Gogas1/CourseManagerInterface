@@ -1,16 +1,11 @@
 ﻿using CourseManagerInterface.Presentation.Core;
 using CourseManagerInterface.Presentation.Networking;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CourseManagerInterface.Presentation.MVVM.ViewModel
 {
     public class LoginViewModel : Core.ViewModel
     {
-        private string _message;       
+        private string _message;
         public string Message
         {
             get => _message;

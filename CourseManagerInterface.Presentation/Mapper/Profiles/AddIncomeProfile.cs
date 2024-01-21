@@ -1,12 +1,5 @@
 ﻿using AutoMapper;
-using CourseManagerInterface.Presentation.MVVM.ViewModel;
-using CourseManagerInterface.Presentation.MVVM.ViewModel.Additional;
 using CourseManagerInterface.Presentation.Requests.List;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CourseManagerInterface.Presentation.Mapper.Profiles
 {

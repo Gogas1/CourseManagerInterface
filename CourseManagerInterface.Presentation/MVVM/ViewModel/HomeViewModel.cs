@@ -1,10 +1,5 @@
 ﻿using CourseManagerInterface.Presentation.Core;
 using CourseManagerInterface.Presentation.Navigation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CourseManagerInterface.Presentation.MVVM.ViewModel
 {
@@ -25,6 +20,6 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel
             ProductsNavigateCommand = new RelayCommand(args => true, args => _navigationService.NavigateTo<ProductManagementViewModel>());
             CreateOutgoingNavigateCommand = new RelayCommand(args => true, args => _navigationService.NavigateTo<CreateOutgoingViewModel>());
             OutgoingsNavigateCommand = new RelayCommand(args => true, args => _navigationService.NavigateTo<OutgoingManagementViewModel>());
-        }              
+        }
     }
 }

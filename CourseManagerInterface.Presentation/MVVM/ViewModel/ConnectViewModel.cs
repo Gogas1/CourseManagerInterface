@@ -2,13 +2,6 @@
 using CourseManagerInterface.Presentation.Navigation;
 using CourseManagerInterface.Presentation.Networking;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 
 namespace CourseManagerInterface.Presentation.MVVM.ViewModel
 {
@@ -34,7 +27,7 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel
             set
             {
                 _port = value;
-                OnPropertyChanged(nameof(Port));                
+                OnPropertyChanged(nameof(Port));
             }
         }
 

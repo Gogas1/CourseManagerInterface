@@ -5,11 +5,6 @@ using CourseManagerInterface.Presentation.Models;
 using CourseManagerInterface.Presentation.MVVM.ViewModel.Additional;
 using CourseManagerInterface.Presentation.Requests;
 using CourseManagerInterface.Presentation.Requests.List;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CourseManagerInterface.Presentation.MVVM.ViewModel.Dialogue
 {
@@ -140,7 +135,7 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel.Dialogue
         }
 
         private void ShowProducts(IEnumerable<Product> products)
-        {            
+        {
             foreach (var product in products)
             {
                 ProductRecord productRecord = new ProductRecord

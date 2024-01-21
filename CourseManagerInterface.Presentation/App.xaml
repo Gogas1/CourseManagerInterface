@@ -9,12 +9,6 @@
         <DataTemplate DataType="{x:Type viewModel:ConnectViewModel}">
             <view:ConnectView/>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewModel:LoginViewModel}">
-            <view:LoginView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type viewModel:TestViewModel}">
-            <view:TestView/>
-        </DataTemplate>
         <DataTemplate DataType="{x:Type viewModel:IncomeRegisterViewModel}">
             <view:IncomeRegisterView/>
         </DataTemplate>

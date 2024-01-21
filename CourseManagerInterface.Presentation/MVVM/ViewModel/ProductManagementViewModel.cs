@@ -3,11 +3,6 @@ using CourseManagerInterface.Presentation.Models;
 using CourseManagerInterface.Presentation.MVVM.ViewModel.Additional;
 using CourseManagerInterface.Presentation.Requests;
 using CourseManagerInterface.Presentation.Requests.List;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CourseManagerInterface.Presentation.MVVM.ViewModel
 {
@@ -112,7 +107,7 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel
             {
                 ProductRecord productRecord = new ProductRecord
                 {
-                    Id = product.Id, 
+                    Id = product.Id,
                     Name = product.Name,
                     Description = product.Description,
                     Amount = product.Amount,

@@ -1,14 +1,8 @@
 ﻿using CourseManagerInterface.Presentation.Core;
 using CourseManagerInterface.Presentation.Models;
-using CourseManagerInterface.Presentation.MVVM.ViewModel.Additional;
 using CourseManagerInterface.Presentation.Navigation;
 using CourseManagerInterface.Presentation.Requests;
 using CourseManagerInterface.Presentation.Requests.List;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CourseManagerInterface.Presentation.MVVM.ViewModel
 {
@@ -132,13 +126,13 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel
         {
             IncomesSearchRequestArguments requestArguments = new IncomesSearchRequestArguments()
             {
-                StartDate = this.StartDate, 
+                StartDate = this.StartDate,
                 EndDate = this.EndDate
             };
 
             IsSearching = true;
             _requestsService.MakeRequest<IncomesSearchRequest>(requestArguments);
-        }        
+        }
     }
 
     public class IncomeRecord : Core.ViewModel

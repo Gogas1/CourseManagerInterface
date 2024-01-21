@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace CourseManagerInterface.Presentation.Networking
 {
@@ -13,7 +9,7 @@ namespace CourseManagerInterface.Presentation.Networking
     {
         private string _host;
         private int _port;
-        
+
         private TcpClient _tcpClient;
 
         public Action<string>? OnLog;
@@ -23,7 +19,7 @@ namespace CourseManagerInterface.Presentation.Networking
         public Action? OnDisconnect;
 
         public Action? OnSent;
-      
+
         public Client()
         {
             AssignHostAndPort("127.0.0.1", 8000);
@@ -106,7 +102,7 @@ namespace CourseManagerInterface.Presentation.Networking
                 catch (IOException ex)
                 {
                     stream.BeginRead(buffer, 0, buffer.Length, ReadCallback, buffer);
-                }                
+                }
             }
             else
             {
@@ -133,7 +129,7 @@ namespace CourseManagerInterface.Presentation.Networking
 
 
                 }
-                
+
             }
             else
             {
@@ -158,7 +154,7 @@ namespace CourseManagerInterface.Presentation.Networking
 
 
                 }
-                
+
             }
             else
             {
@@ -174,7 +170,7 @@ namespace CourseManagerInterface.Presentation.Networking
             {
                 _tcpClient.Client.Disconnect(true);
             }
-            
+
         }
 
         public void Close()

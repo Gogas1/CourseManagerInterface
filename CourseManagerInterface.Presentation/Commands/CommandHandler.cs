@@ -1,10 +1,5 @@
 ﻿using CourseManagerInterface.Presentation.Networking;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace CourseManagerInterface.Presentation.Commands
 {
@@ -33,7 +28,7 @@ namespace CourseManagerInterface.Presentation.Commands
             catch
             {
 
-            }          
+            }
         }
     }
 }

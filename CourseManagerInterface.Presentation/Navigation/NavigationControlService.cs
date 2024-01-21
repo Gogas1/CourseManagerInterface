@@ -1,10 +1,5 @@
 ﻿using CourseManagerInterface.Presentation.MVVM.ViewModel;
 using CourseManagerInterface.Presentation.Networking;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CourseManagerInterface.Presentation.Navigation
 {

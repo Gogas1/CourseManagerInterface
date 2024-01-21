@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CourseManagerInterface.Presentation.Networking
+﻿namespace CourseManagerInterface.Presentation.Networking
 {
     public class ClientHost
     {
@@ -14,7 +6,7 @@ namespace CourseManagerInterface.Presentation.Networking
 
         private readonly Queue<string> messages = new Queue<string>();
 
-        public event Action<string>? OnLog;        
+        public event Action<string>? OnLog;
 
         public event Action? OnConnect;
         public event Action? OnDisconnect;

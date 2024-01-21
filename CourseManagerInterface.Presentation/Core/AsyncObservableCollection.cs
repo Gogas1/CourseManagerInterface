@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CourseManagerInterface.Presentation.Core
 {
@@ -35,7 +30,7 @@ namespace CourseManagerInterface.Presentation.Core
         }
 
         private void RaiseCollectionChanged(object param)
-        {            
+        {
             base.OnCollectionChanged((NotifyCollectionChangedEventArgs)param);
         }
 

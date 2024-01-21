@@ -1,12 +1,6 @@
 ﻿using CourseManagerInterface.Presentation.Core;
 using CourseManagerInterface.Presentation.Navigation;
 using CourseManagerInterface.Presentation.Networking;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CourseManagerInterface.Presentation.MVVM.ViewModel
 {
@@ -71,7 +65,7 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel
         #endregion Public
 
         #region Private
-        
+
         private void Exit(object args)
         {
             _clientHost.CloseClient();

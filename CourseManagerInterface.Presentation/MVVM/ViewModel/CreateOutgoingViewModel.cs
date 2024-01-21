@@ -7,11 +7,6 @@ using CourseManagerInterface.Presentation.MVVM.ViewModel.Additional;
 using CourseManagerInterface.Presentation.MVVM.ViewModel.Dialogue;
 using CourseManagerInterface.Presentation.Requests;
 using CourseManagerInterface.Presentation.Requests.List;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CourseManagerInterface.Presentation.MVVM.ViewModel
 {
@@ -143,15 +138,15 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel
 
             bool success = showDialog(dialogueViewModel);
             dialogueViewModel.UnsubscribeEvents();
-            if(success)
+            if (success)
             {
                 var addedProduct = dialogueViewModel.FinalProduct;
                 Products.Add(addedProduct);
             }
-            
+
             UpdateSummLabel();
         }
-        
+
         private void UpdateSummLabel()
         {
             summ = Products.Sum(p => p.Price * (decimal)p.Amount);

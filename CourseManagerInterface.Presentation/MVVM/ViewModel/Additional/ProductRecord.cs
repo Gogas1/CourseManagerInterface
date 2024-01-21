@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CourseManagerInterface.Presentation.MVVM.ViewModel.Additional
+﻿namespace CourseManagerInterface.Presentation.MVVM.ViewModel.Additional
 {
     public class ProductRecord : Core.ViewModel
     {

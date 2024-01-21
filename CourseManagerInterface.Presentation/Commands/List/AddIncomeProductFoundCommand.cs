@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
+﻿using System.Text.Json;
 
 namespace CourseManagerInterface.Presentation.Commands.List
 {
@@ -22,16 +17,16 @@ namespace CourseManagerInterface.Presentation.Commands.List
             {
                 AddIncomeProductFoundCommandData? data = JsonSerializer.Deserialize<AddIncomeProductFoundCommandData>(args ?? string.Empty);
 
-                if(data != null)
+                if (data != null)
                 {
                     _callbackService.Execute(data);
-                }               
+                }
             }
             catch
             {
 
             }
-            
+
         }
     }
 

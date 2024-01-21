@@ -2,11 +2,6 @@
 using CourseManagerInterface.Presentation.Models;
 using CourseManagerInterface.Presentation.Requests;
 using CourseManagerInterface.Presentation.Requests.List;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static CourseManagerInterface.Presentation.Requests.List.SearchOutgoingsRequest;
 
 namespace CourseManagerInterface.Presentation.MVVM.ViewModel
@@ -82,7 +77,7 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel
         }
 
         public void ShowSearchResult(IEnumerable<Outgoing> outgoingsFound)
-        {            
+        {
             Outgoings.Clear();
             foreach (var outgoing in outgoingsFound)
             {
@@ -102,7 +97,7 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel
         {
             SearchOutgoingsRequestArguments requestArguments = new SearchOutgoingsRequestArguments
             {
-                StartDate = this.StartDate, 
+                StartDate = this.StartDate,
                 EndDate = this.EndDate,
             };
 

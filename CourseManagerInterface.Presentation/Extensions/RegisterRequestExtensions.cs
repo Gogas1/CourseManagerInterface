@@ -1,11 +1,6 @@
 ﻿using CourseManagerInterface.Presentation.Requests;
 using CourseManagerInterface.Presentation.Requests.List;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CourseManagerInterface.Presentation.Extensions
 {
@@ -13,7 +8,6 @@ namespace CourseManagerInterface.Presentation.Extensions
     {
         public static void AddRequests(this IServiceCollection services)
         {
-            services.AddScoped<TestRequest>();
             services.AddScoped<AddIncomeRequest>();
             services.AddScoped<AddIncomeSearchProductRequest>();
             services.AddScoped<IncomesSearchRequest>();

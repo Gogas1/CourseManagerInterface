@@ -1,10 +1,5 @@
 ﻿using CourseManagerInterface.Presentation.Networking;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace CourseManagerInterface.Presentation.Requests.List
 {
@@ -26,7 +21,7 @@ namespace CourseManagerInterface.Presentation.Requests.List
                 Command = "get_outgoingproduct_id",
                 CommandData = JsonSerializer.Serialize(argument)
             };
-            
+
             _clientHost.SendMessage(JsonSerializer.Serialize(masterMessage));
         }
     }
