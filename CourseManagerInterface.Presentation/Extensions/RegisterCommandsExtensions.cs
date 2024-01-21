@@ -23,6 +23,7 @@ namespace CourseManagerInterface.Presentation.Extensions
             services.AddKeyedTransient<Command, OutgoingProductFoundCommand>("outgoing_product_search_result");
             services.AddKeyedTransient<Command, OutgoingProductsFoundCommand>("outgoing_products_search_result");
             services.AddKeyedTransient<Command, HandleOutgoingSubmitResultCommand>("outgoing_submit_result");
+            services.AddKeyedTransient<Command, HandleIncomeRegistrationResultCommand>("addincome_command_result");
 
             services.AddSingleton<AddIncomeProductFoundCommandCallbackService>();
             services.AddSingleton<OutgoingProductsFoundCommandCallbackService>();

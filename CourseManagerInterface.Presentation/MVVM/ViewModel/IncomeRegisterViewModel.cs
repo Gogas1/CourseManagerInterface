@@ -2,9 +2,11 @@
 using CourseManagerInterface.Presentation.Commands.List;
 using CourseManagerInterface.Presentation.Core;
 using CourseManagerInterface.Presentation.Dialogues;
+using CourseManagerInterface.Presentation.Models;
 using CourseManagerInterface.Presentation.MVVM.View.Dialogue;
 using CourseManagerInterface.Presentation.MVVM.ViewModel.Additional;
 using CourseManagerInterface.Presentation.MVVM.ViewModel.Dialogue;
+using CourseManagerInterface.Presentation.Navigation;
 using CourseManagerInterface.Presentation.Requests;
 using CourseManagerInterface.Presentation.Requests.List;
 using System;
@@ -41,24 +43,58 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel
             }
         }
 
+        private bool _isSubmiting;
+        public bool IsSubmitting
+        {
+            get => _isSubmiting;
+            set
+            {
+                _isSubmiting = value;
+                OnPropertyChanged(nameof(IsSubmitting));
+            }
+        }
+        private bool _isSubmitted;
+        public bool IsSubmitted
+        {
+            get => _isSubmitted;
+            set
+            {
+                _isSubmitted = value;
+                OnPropertyChanged(nameof(IsSubmitted));
+            }
+        }
+        private bool _isCanceled;
+        public bool IsCanceled
+        {
+            get => _isCanceled;
+            set
+            {
+                _isCanceled = value;
+                OnPropertyChanged(nameof(IsCanceled));
+            }
+        }
+
         private readonly DialogueService _dialogueService;
         private readonly RequestsService _requestsService;
+        private readonly NavigationService _navigationService;
         private readonly IMapper _mapper;
         private readonly AddIncomeProductFoundCommandCallbackService _productFoundCallbackService;
 
         public RelayCommand ShowAddProductDialogCommand { get; }
         public RelayCommand SendCreationRequestCommand { get; }
+        public RelayCommand HomeNavigationCommand { get; }
 
-        public IncomeRegisterViewModel(DialogueService dialogueService, RequestsService requestsService, IMapper mapper, AddIncomeProductFoundCommandCallbackService productFoundCallbackService)
+        public IncomeRegisterViewModel(DialogueService dialogueService, RequestsService requestsService, IMapper mapper, AddIncomeProductFoundCommandCallbackService productFoundCallbackService, NavigationService navigationService)
         {
-            _dialogueService = dialogueService;
-
-            ShowAddProductDialogCommand = new RelayCommand(args => true, ShowDialogAction);
-            SendCreationRequestCommand = new RelayCommand(args => IncomeProducts.Any(), Create);
-
+            _dialogueService = dialogueService;            
             _requestsService = requestsService;
             _mapper = mapper;
             _productFoundCallbackService = productFoundCallbackService;
+            _navigationService = navigationService;
+
+            ShowAddProductDialogCommand = new RelayCommand(args => true, ShowDialogAction);
+            SendCreationRequestCommand = new RelayCommand(args => IncomeProducts.Any(), Create);
+            HomeNavigationCommand = new RelayCommand(args => true, args => _navigationService.NavigateTo<HomeViewModel>());
         }
 
         private void ShowDialogAction(object args)
@@ -103,6 +139,7 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel
 
         private void Create(object args)
         {
+            IsSubmitting = true;
             var products = _mapper.Map<List<RequestIncomeProduct>>(IncomeProducts);
 
             AddIncomeRequestArguments requestArguments = new AddIncomeRequestArguments()
@@ -113,6 +150,24 @@ namespace CourseManagerInterface.Presentation.MVVM.ViewModel
             };
 
             _requestsService.MakeRequest<AddIncomeRequest>(requestArguments);
+        }
+
+        public void SetSubmitResult(bool result)
+        {
+            IsSubmitting = false;
+            IsSubmitted = result;
+            IsCanceled = !result;
+
+            if (IsSubmitted)
+            {
+                Reset();
+            }
+        }
+
+        private void Reset()
+        {
+            IncomeProducts.Clear();
+            IsSubmitting = IsCanceled = IsSubmitted = false;
         }
     }
     

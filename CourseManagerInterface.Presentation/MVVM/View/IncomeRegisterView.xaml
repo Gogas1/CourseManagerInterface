@@ -29,7 +29,7 @@
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" />
                     <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
                     <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Description}" />
-                    <GridViewColumn Header="Count" DisplayMemberBinding="{Binding Count}" />
+                    <GridViewColumn Header="Count" DisplayMemberBinding="{Binding Amount}" />
                     <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Price}" />
                     <GridViewColumn Header="Type" DisplayMemberBinding="{Binding Type}" />
                 </GridView>
@@ -67,6 +67,36 @@
                 Margin="10 0 0 0"
                 Command="{Binding SendCreationRequestCommand}"
                 />
+            <Button 
+                Content="На головну"
+                HorizontalAlignment="Left"
+                Padding="5"
+                Margin="10 10 0 0"
+                Command="{Binding HomeNavigationCommand}"
+            />
+            <Label 
+                FontSize="18"
+                Content="Submitting..."
+                HorizontalAlignment="Center"
+                Visibility="{Binding IsSubmitting, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+            <StackPanel
+                Visibility="{Binding IsSubmitted, Converter={StaticResource BooleanToVisibilityConverter}}"
+                HorizontalAlignment="Center">
+                <Label 
+                    FontSize="18"
+                    Content="Submitted"
+                    Foreground="Green"
+                />
+            </StackPanel>
+            <StackPanel
+                Visibility="{Binding IsCanceled, Converter={StaticResource BooleanToVisibilityConverter}}"
+                HorizontalAlignment="Center">
+                <Label 
+                    FontSize="18"
+                    Content="Canceled"
+                    Foreground="Red"
+                />
+            </StackPanel>
         </StackPanel>
     </Grid>
 </UserControl>
