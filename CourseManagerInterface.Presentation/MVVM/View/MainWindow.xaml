@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:CourseManagerInterface.Presentation"  
         xmlns:views="clr-namespace:CourseManagerInterface.Presentation.MVVM.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="Менеджер" Height="450" Width="800"
         WindowState="Maximized">
     <Grid>
         <Grid.RowDefinitions>
